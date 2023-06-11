@@ -7,7 +7,8 @@ pipeline {
         stage('Code quality') {
             steps {
                 script{
-                    echo 'Test 6'
+                    def ret =  sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                    echo "Test 6 ${ret}"
                 }
             }
         }
