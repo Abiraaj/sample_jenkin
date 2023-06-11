@@ -23,7 +23,7 @@ pipeline {
         stage('publish') {
            
             steps {
-			    echo "pushing helm chart for the microservice to harbor repo. ${currentPomVersion}"
+			    echo "repo."
                 script{
                    echo 'Test 4'
                 }
