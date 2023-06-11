@@ -9,6 +9,12 @@ pipeline {
                 script{
                     def ret =  sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
                     echo "Test 6 ${ret}"
+                    // Tag comment
+                    def tagComment = 'This is a tag comment'
+
+                    // Add the tag using Git command
+                    sh "git tag -a ${ret} -m '${tagComment}'"
+                    sh "git push origin ${ret}"
                 }
             }
         }
