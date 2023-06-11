@@ -14,7 +14,9 @@ pipeline {
 
                     // Add the tag using Git command
                     sh "git tag -a ${ret} -m '${tagComment}'"
-                    sh "git push origin ${ret}"
+                    withCredentials([gitUsernamePassword(''abicred', gitToolName: 'git-tool')]) {
+                        sh "git push origin ${ret}"
+                    }
                 }
             }
         }
