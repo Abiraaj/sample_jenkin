@@ -16,7 +16,7 @@ pipeline {
                     sh "git tag -a ${ret} -m '${tagComment}'"
                     
                     sshagent(credentials: ['Jenkin_deployKey']) {
-                        sh "git push origin master"
+                        sh 'git push --tags'
                     }
                 }
             }
