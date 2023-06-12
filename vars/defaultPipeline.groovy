@@ -14,8 +14,9 @@ pipeline {
 
                     // Add the tag using Git command
                     sh "git tag -a ${ret} -m '${tagComment}'"
-                    withCredentials([gitUsernamePassword(credentialsId: 'abicred', gitToolName: 'git-tool')]) {
-                        sh "git push origin ${ret}"
+                    
+                    sshagent(credentials: ['Jenkin_deployKey']) {
+                        sh "git push -u origin master"
                     }
                 }
             }
